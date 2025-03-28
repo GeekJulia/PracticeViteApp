@@ -1,0 +1,78 @@
+useContext is a React Hook that simplifies state management by allowing components to access data 
+globally without the hassle of prop drilling. It’s perfect for sharing data across multiple components, 
+especially when they are far apart in the component tree. 🌳
+
+What is useContext in Simple Terms?
+Imagine you have a global state (like user info, theme settings, or app language) 
+that many components need access to. Instead of passing this state through props 
+from parent to child (which gets messy fast), useContext lets you:
+
+Create a context to store data.
+Provide the data to all components in the tree.
+Consume the data wherever needed.
+
+How useContext Works: Step by Step
+Let's break it down with a quick example:
+
+1️⃣ Create a Context
+javascript
+Copy
+Edit
+import React, { createContext, useContext, useState } from 'react';
+
+// Create a Context
+const UserContext = createContext();
+createContext() creates a context object.
+
+UserContext now holds our global data.
+
+2️⃣ Provide the Context Data
+javascript
+Copy
+Edit
+function App() {
+  const [user, setUser] = useState("Julia");
+  return (
+    <UserContext.Provider value={user}>
+      <Navbar />
+    </UserContext.Provider>
+  );
+}
+UserContext.Provider is a wrapper that provides data to components inside it.
+value={user} sets the value accessible to any component in the tree.
+
+3️⃣ Consume the Context Data
+javascript
+Copy
+Edit
+function Navbar() {
+  return (
+    <div>
+      <UserProfile />
+    </div>
+  );
+}
+
+function UserProfile() {
+  const user = useContext(UserContext); // 👈 Access context data here
+  return <h1>Welcome, {user}!</h1>;
+}
+useContext(UserContext) lets UserProfile access the value from UserContext.
+Now UserProfile can read the user value directly without needing props!
+
+Use useContext when:
+Many components need access to the same data (e.g., user info, themes, authentication state).
+You want to avoid prop drilling (passing props through multiple layers).
+You don’t need complex state management (e.g., Redux, Zustand).
+
+⚡ Important Notes About useContext
+If context value changes, all components using useContext re-render.
+Avoid storing large objects or frequently changing values—can cause unnecessary re-renders.
+
+🎯 Summary of useContext
+Purpose: Share data between components without prop drilling.
+Steps:
+Create a context using createContext.
+Wrap your app with the context provider (Provider).
+Use useContext to access data from the context.
+✅ Ideal for global state like themes, auth, and user data.

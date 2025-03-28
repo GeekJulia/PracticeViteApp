@@ -9,6 +9,7 @@ import BrandCar from "./pages/BrandCar";
 import Timer from "./pages/Timer";
 import CheckAmt from "./pages/CheckAmt";
 import Focusinput from "./pages/FocusInput";
+import CompContext from "./pages/CompContext";
 
 function App() {
     const router = createBrowserRouter([{
@@ -51,6 +52,14 @@ function App() {
             element: (
                 <Suspense fallback={<LoadingHelper />}>
                     <Focusinput/>
+                </Suspense>
+            )
+        },
+        {
+            path:"/compcontext",
+            element: (
+                <Suspense fallback={<LoadingHelper />}>
+                    <CompContext/>
                 </Suspense>
             )
         }
