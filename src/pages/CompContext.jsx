@@ -1,4 +1,5 @@
 import { useState, createContext, useContext } from "react";
+//PRACTICE FOR USECONTEXT
 
 const UserContext = createContext();
 
