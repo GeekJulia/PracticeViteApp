@@ -1,0 +1,102 @@
+What is a Hook in React?
+A hook in React is just a special function that lets you use React features inside functional components.
+It is just a function that "hooks" React features (like state, lifecycle, or context) inside functional components. 
+
+Hook Rules
+There are 3 rules for hooks:
+Hooks can only be called inside React function components.
+Hooks can only be called at the top level of a component.
+Hooks cannot be conditional
+
+{ useState } is destructuring, meaning we only take useState from react.
+useState is a named export, so we must use {} when importing it.
+If we wanted multiple things, we could do:
+import { useState, useEffect } from "react";
+If React had a default export, we could import it without {} (but it doesn’t).
+
+The useState Hook can be used to keep track of strings, numbers, booleans, arrays, objects, and any combination of these!
+We could create multiple state Hooks to track individual values.
+
+USE EFFECT
+The useEffect Hook allows you to perform side effects in your components.
+Side-effect-free: The render function should not cause any external effects, such as:
+Modifying global variables
+Mutating state or props directly
+Making network requests
+Manipulating the DOM (except through JSX)
+
+Side effects break this rule because they:
+Interact with external systems (like fetching data from an API).
+Change something outside React’s world (like manually updating the DOM).
+Run asynchronous code (like setting a timer).
+
+this is an arrow function ==> setTimeout(() => {});
+
+ Side effects are actions outside React’s normal rendering (API calls, DOM updates, timers).
+✔️ useEffect is used to handle them properly and avoid unnecessary re-runs.
+✔️ It runs automatically after the component renders and can run:
+
+Once (on mount) → useEffect(..., [])
+On state/prop changes → useEffect(..., [state])
+On every render (if no dependency array).
+
+dependencies → A list of values that, when changed, will trigger the effect.
+If empty ([]), it runs only once when the component mounts.
+If specific values are in the array ([state]), it runs when those values change.
+If missing (no array), it runs on every render.
+
+1️⃣ Run Once (On Mount) → useEffect(..., [])
+If the dependency array is empty ([]), the effect runs only once, when the component first appears (mounts).
+📌 Use cases:
+✅ Fetching data when a component loads
+✅ Setting up event listeners
+✅ Changing the page title
+
+2️⃣ Run On State/Prop Changes → useEffect(..., [state])
+If the dependency array has a state variable or prop, the effect runs whenever that value changes.
+📌 Use cases:
+✅ Reacting to user input
+✅ Fetching new data when a filter or ID changes
+✅ Running animations when a value updates
+
+3️⃣ Run On Every Render (No Dependency Array)
+If there’s no dependency array, useEffect runs after every render, no matter what changes.
+When is this useful?
+If you’re dealing with animations.
+If you need real-time updates like WebSockets.
+
+CLEANUP TIMER
+Below setTimeout is set to a variable, so after we pass it into the clearTimeout function
+useEffect(() => {
+    let timer = setTimeout(() => {
+    setCount((count) => count + 1);
+  }, 1000);
+
+  return () => clearTimeout(timer)
+  }, []);
+
+USEREF
+The useRef Hook allows you to persist values between renders.
+It can be used to store a mutable value that does not cause a re-render when updated.
+It can be used to access a DOM element directly.
+
+const count = useRef(0); // value passed into useRef is going to be the value of current. so count can then access and modify by const.current
+count.current;   ===> const count = {current: 0}, can be accessed by const.current too
+===> this means, useRef() only returns one item. It returns an Object called current.
+When we initialize useRef we set the initial value: useRef(0).
+It's like doing this: const count = {current: 0}. We can access the count by using count.current.
+
+Updates done in useRef are stored and not reset on re-renders:
+When you update the value of myRef.current, that value stays the same even when the component re-renders. React doesn’t reset it.
+Changes to useRef do NOT cause re-renders:
+When you modify myRef.current, it doesn’t trigger a re-render of the component. React simply stores the new value quietly.
+
+onChange={(e) => setInputValue(e.target.value)}
+This line is a React event handler attached to the <input> element, and it does the following:
+
+onChange is a built-in React event that triggers whenever the value of the input changes (e.g., typing in the input box).
+(e) => setInputValue(e.target.value) is an arrow function that takes an event object e as its argument.
+e.target represents the HTML element that triggered the event (in this case, the input field).
+e.target.value gives you the current value typed in the input box.
+setInputValue is a function (typically from useState) that updates the state variable 
+inputValue with the new value from the input box.
