@@ -10,6 +10,7 @@ import Timer from "./pages/Timer";
 import CheckAmt from "./pages/CheckAmt";
 import Focusinput from "./pages/FocusInput";
 import CompContext from "./pages/CompContext";
+import Reduceapp from "./pages/Reduceapp";
 
 function App() {
     const router = createBrowserRouter([{
@@ -60,6 +61,14 @@ function App() {
             element: (
                 <Suspense fallback={<LoadingHelper />}>
                     <CompContext/>
+                </Suspense>
+            )
+        },
+        {
+            path:"/reducer",
+            element: (
+                <Suspense fallback={<LoadingHelper />}>
+                    <Reduceapp/>
                 </Suspense>
             )
         }

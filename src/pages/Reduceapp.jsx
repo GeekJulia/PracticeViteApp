@@ -26,7 +26,7 @@ const reducer = (state, action) => {
         return state;
     }
   };
-  function Todos() {
+  export default function Reduceapp() {
     const [todos, dispatch] = useReducer(reducer, initialTodos);
   
     const handleComplete = (todo) => {
