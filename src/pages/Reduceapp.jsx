@@ -2,13 +2,13 @@ import { useReducer } from "react";
 //PRACTICE FOR USEREDUCER
 
 //setting up the intital state
-const initialState = { //question: why is it in a dictionary
+const initialState = { 
   count:0 //this is our starting point the counter starts at 0
 }
 
 //creating the reducer function which will be used to update the state
 function reducer(state,action) { // starting a reducer function, that takes an action and updates the state
-  switch(action){ //question: Why do we pass in action.type instead of just action
+  switch(action.type){ //action.type allows for more flexibility
     case "increment" :
       return{count : state.count + 1} //we are passing initialState inside so to access the count value we do state.count like initialState.count
     case "decrement" :
@@ -22,23 +22,23 @@ function reducer(state,action) { // starting a reducer function, that takes an a
 
 //using useReducer in the component
 export default function Reduceapp(){
-const[state,dispatch] = useReducer(reducer, initialState); // question the value of state at this point
+const[state,dispatch] = useReducer(reducer, initialState); // useReducer calls reducer function and pass in initialState as a value into state
 return (
   <div>
     <p>Count : {state.count}</p>
     <button onClick={
       () => {
-        dispatch("increment")
+        dispatch({type:"increment"})
       }
     }>+</button>
     <button onClick={
       () => {
-        dispatch("decrement")
+        dispatch({type:"decrement"})
       }
   }>-</button>
     <button onClick={
       () => {
-        dispatch("reset")
+        dispatch({type:"reset"})
       }
   }>Reset</button>
   </div>
