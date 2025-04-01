@@ -52,3 +52,13 @@ useCallback memoizes a function to prevent it from being recreated unnecessarily
 It helps with performance optimization by preventing child components from re-rendering.
 Use it when passing functions as props to child components.
 Only re-creates the function if dependencies change.
+
+USEMEMO
+The React useMemo Hook returns a memoized value.
+Think of memoization as caching a value so that it does not need to be recalculated.
+The useMemo Hook only runs when one of its dependencies update.
+This can improve performance.
+The useMemo and useCallback Hooks are similar. 
+The main difference is that useMemo returns a memoized value and useCallback returns a memoized function
+
+The useMemo Hook can be used to keep expensive, resource intensive functions from needlessly running.
