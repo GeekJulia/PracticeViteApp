@@ -33,3 +33,22 @@ In coding, memoization stores results of expensive function calls and returns th
 Caching is a system design concept that involves storing frequently accessed data in a location that is easily and quickly accessible.
 It’s super useful in cases where the same calculation happens repeatedly.
 
+useCallback allows us to isolate resource intensive functions so that they will not automatically run on every render.
+The useCallback Hook only runs when one of its dependencies update.
+This can improve performance.
+it returns a memoized function
+A component using the useState hook does re-render even if props haven’t changed—as long as state changes
+
+ When Should You Use useCallback?
+useCallback is useful for:
+Passing functions to child components that rely on reference equality (e.g., React.memo).
+Avoiding unnecessary re-renders in large lists or complex UIs.
+Optimizing performance in components that re-render often.
+⚡ Don’t Overuse It! Using useCallback can be counterproductive if your component isn’t expensive to re-render. 
+It’s best for components that perform heavy calculations or re-render frequently.
+
+Quick Recap:
+useCallback memoizes a function to prevent it from being recreated unnecessarily.
+It helps with performance optimization by preventing child components from re-rendering.
+Use it when passing functions as props to child components.
+Only re-creates the function if dependencies change.
