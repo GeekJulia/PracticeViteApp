@@ -12,6 +12,7 @@ import Focusinput from "./pages/FocusInput";
 import CompContext from "./pages/CompContext";
 import Reduceapp from "./pages/Reduceapp";
 import CallbackApp from "./pages/CallbackApp";
+import MemoApp from "./pages/MemoApp";
 
 function App() {
     const router = createBrowserRouter([{
@@ -78,6 +79,14 @@ function App() {
             element: (
                 <Suspense fallback={<LoadingHelper />}>
                     <CallbackApp/>
+                </Suspense>
+            )
+        },
+        {
+            path:"/memoCall",
+            element: (
+                <Suspense fallback={<LoadingHelper />}>
+                    <MemoApp/>
                 </Suspense>
             )
         }
