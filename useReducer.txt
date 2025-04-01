@@ -25,3 +25,11 @@ action.type allows more powerful and descriptive actions, making your reducer ex
 👉 Using action.type is a common pattern in state management (like Redux) because it:
 Allows the action object to carry extra information if needed.
 Makes it easier to extend the action with more data.
+
+USECALLBACK
+These react Hook returns a memoized callback function
+That’s memoization! It’s a way to make programs run faster by remembering answers to repeated requests or questions.
+In coding, memoization stores results of expensive function calls and returns the cached result when the same inputs occur again. 
+Caching is a system design concept that involves storing frequently accessed data in a location that is easily and quickly accessible.
+It’s super useful in cases where the same calculation happens repeatedly.
+
