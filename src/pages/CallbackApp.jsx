@@ -1,4 +1,5 @@
 import {useState, useCallback} from "react";
+//PRACTICE FOR USECALLBACK
 
 function Counter({increment}){
     console.log("Counter Component Rendered!");

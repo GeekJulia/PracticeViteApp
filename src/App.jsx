@@ -11,6 +11,7 @@ import CheckAmt from "./pages/CheckAmt";
 import Focusinput from "./pages/FocusInput";
 import CompContext from "./pages/CompContext";
 import Reduceapp from "./pages/Reduceapp";
+import CallbackApp from "./pages/CallbackApp";
 
 function App() {
     const router = createBrowserRouter([{
@@ -69,6 +70,14 @@ function App() {
             element: (
                 <Suspense fallback={<LoadingHelper />}>
                     <Reduceapp/>
+                </Suspense>
+            )
+        },
+        {
+            path:"/callback",
+            element: (
+                <Suspense fallback={<LoadingHelper />}>
+                    <CallbackApp/>
                 </Suspense>
             )
         }
