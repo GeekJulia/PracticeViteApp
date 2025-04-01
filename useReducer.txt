@@ -7,3 +7,21 @@ initialState → The initial state value { count: 0 }
 useReducer gives us two things in return:
 state → The current state value (starts as { count: 0 })
 dispatch → A function we can use to send actions to the reducer
+
+When you call:
+const [state, dispatch] = useReducer(reducer, initialState);
+React handles a few things behind the scenes:
+useReducer automatically calls your reducer function the first time with:
+state set to initialState
+action set to undefined (ignored on initial render)
+
+But what if you later decide to track more data, like a username or status? You’d need to rewrite a lot of code.
+
+Quick Recap:
+Using an object for initialState keeps your code flexible and scalable. 
+React automatically initializes state with initialState when useReducer is called.
+action.type allows more powerful and descriptive actions, making your reducer extensible.
+
+👉 Using action.type is a common pattern in state management (like Redux) because it:
+Allows the action object to carry extra information if needed.
+Makes it easier to extend the action with more data.

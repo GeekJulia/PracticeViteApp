@@ -8,7 +8,7 @@ const initialState = { //question: why is it in a dictionary
 
 //creating the reducer function which will be used to update the state
 function reducer(state,action) { // starting a reducer function, that takes an action and updates the state
-  switch(action.type){ //question: Why do we pass in action.type instead of just action
+  switch(action){ //question: Why do we pass in action.type instead of just action
     case "increment" :
       return{count : state.count + 1} //we are passing initialState inside so to access the count value we do state.count like initialState.count
     case "decrement" :
@@ -28,17 +28,17 @@ return (
     <p>Count : {state.count}</p>
     <button onClick={
       () => {
-        dispatch({type : "increment"})
+        dispatch("increment")
       }
     }>+</button>
     <button onClick={
       () => {
-        dispatch({type : "decrement"})
+        dispatch("decrement")
       }
   }>-</button>
     <button onClick={
       () => {
-        dispatch({type : "reset"})
+        dispatch("reset")
       }
   }>Reset</button>
   </div>
