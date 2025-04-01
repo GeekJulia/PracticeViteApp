@@ -1,51 +1,46 @@
 import { useReducer } from "react";
+//PRACTICE FOR USEREDUCER
 
-const initialTodos = [
-  {
-    id: 1,
-    title: "Todo 1",
-    complete: false,
-  },
-  {
-    id: 2,
-    title: "Todo 2",
-    complete: false,
-  },
-];
-const reducer = (state, action) => {
-    switch (action.type) {
-      case "COMPLETE":
-        return state.map((todo) => {
-          if (todo.id === action.id) {
-            return { ...todo, complete: !todo.complete };
-          } else {
-            return todo;
-          }
-        });
+//setting up the intital state
+const initialState = { //question: why is it in a dictionary
+  count:0 //this is our starting point the counter starts at 0
+}
+
+//creating the reducer function which will be used to update the state
+function reducer(state,action) { // starting a reducer function, that takes an action and updates the state
+  switch(action.type){ //question: Why do we pass in action.type instead of just action
+    case "increment" :
+      return{count : state.count + 1} //we are passing initialState inside so to access the count value we do state.count like initialState.count
+    case "decrement" :
+      return {count : state.count -1}
+    case "reset" :
+      return initialState;
       default:
-        return state;
-    }
-  };
-  export default function Reduceapp() {
-    const [todos, dispatch] = useReducer(reducer, initialTodos);
-  
-    const handleComplete = (todo) => {
-      dispatch({ type: "COMPLETE", id: todo.id });
-    };
-    return (
-        <>
-          {todos.map((todo) => (
-            <div key={todo.id}>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={todo.complete}
-                  onChange={() => handleComplete(todo)}
-                />
-                {todo.title}
-              </label>
-            </div>
-          ))}
-        </>
-      );
-    }
+        throw new Error();
+  }
+}
+
+//using useReducer in the component
+export default function Reduceapp(){
+const[state,dispatch] = useReducer(reducer, initialState); // question the value of state at this point
+return (
+  <div>
+    <p>Count : {state.count}</p>
+    <button onClick={
+      () => {
+        dispatch({type : "increment"})
+      }
+    }>+</button>
+    <button onClick={
+      () => {
+        dispatch({type : "decrement"})
+      }
+  }>-</button>
+    <button onClick={
+      () => {
+        dispatch({type : "reset"})
+      }
+  }>Reset</button>
+  </div>
+)
+}

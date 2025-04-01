@@ -1,0 +1,9 @@
+const[state,dispatch] = useReducer(reducer, initialState);
+
+What’s Happening?
+We call useReducer with two things:
+reducer → The function that handles state updates
+initialState → The initial state value { count: 0 }
+useReducer gives us two things in return:
+state → The current state value (starts as { count: 0 })
+dispatch → A function we can use to send actions to the reducer
