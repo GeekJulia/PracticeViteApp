@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+//PRACTIC USE MEMO
 
 export default function MemoApp() {
   const [count, setCount] = useState(0);

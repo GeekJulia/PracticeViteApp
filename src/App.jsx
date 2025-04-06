@@ -13,6 +13,7 @@ import CompContext from "./pages/CompContext";
 import Reduceapp from "./pages/Reduceapp";
 import CallbackApp from "./pages/CallbackApp";
 import MemoApp from "./pages/MemoApp";
+import Start from "./pages/Start";
 
 function App() {
     const router = createBrowserRouter([{
@@ -23,7 +24,7 @@ function App() {
             index: true,
             element: (
             <Suspense fallback={<LoadingHelper/>}>
-                <Color />
+                <Start />
             </Suspense>),
         },
         {
@@ -87,6 +88,14 @@ function App() {
             element: (
                 <Suspense fallback={<LoadingHelper />}>
                     <MemoApp/>
+                </Suspense>
+            )
+        },
+        {
+            path:"/favColor",
+            element: (
+                <Suspense fallback={<LoadingHelper />}>
+                    <Color/>
                 </Suspense>
             )
         }

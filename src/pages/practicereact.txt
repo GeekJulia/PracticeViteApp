@@ -1,0 +1,18 @@
+Classes
+class Car{ //a class name always begin with a capital letter
+    constructor(name){
+        this.brand = name;
+    }
+    
+    present(){ 
+        return 'I have a ' + this.brand
+    }
+}
+const mycar = new Car("Ford")
+mycar.present();
+//you call the method by referring to the object's 
+//method name followed by parentheses (parameters would go inside the parentheses).
+
+The super() method refers to the parent class.
+By calling the super() method in the constructor method, w
+e call the parent's constructor method and get access to the parent's properties and methods.
